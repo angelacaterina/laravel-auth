@@ -18,14 +18,14 @@
                 <td>{{$value->title}}</td>
                 <td>{{$value->slug}}</td>
                 <td>
-                    <a href="" class="btn btn-primary"><i class="far fa-eye fa-xs fa-fw"></i></a>
-                    <a href="" class="btn btn-warning"><i class="fas fa-edit fa-xs fa-fw"></i></a>
+                    <a href="{{ route('admin.posts.show', ['post'=>$value->slug] )}}" class="btn btn-primary"><i class="far fa-eye fa-xs fa-fw"></i></a>
+                    <a href="{{ route('admin.posts.edit', ['post'=>$value->id] )}}" class="btn btn-warning"><i class="fas fa-edit fa-xs fa-fw"></i></a>
                     <!-- MODO 1: Eliminazione istantanea del Post -->
-                    {{-- <form action="{{ route('posts.destroy', ['post'=> $value->id]) }}" method="post">
+                    <form action="{{ route('admin.posts.destroy', ['post'=> $value->id]) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt fa-xs fa-fw"></i></button>
-                    </form> --}}
+                    </form>
 
                     <!-- MODO 2: Eliminazine con conferma del Post -->
                     <!-- Button trigger modal -->
@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <form action="{{ route('posts.destroy', ['post'=> $value->id]) }}" method="post">
+                                    <form action="{{ route('admin.posts.destroy', ['post'=> $value->id]) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Delete</button>
